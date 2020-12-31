@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>作用域插槽</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+  <hr>
+  <cpn>
+    <template slot-scope="slot">
+      <span v-for="item in slot.data">{{item}}</span>
+    </template>
+  </cpn>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <slot :data="movies">
+      <ul>
+        <li v-for="item in movies">{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn: {
+        template: '#myTemplate',
+        data() {
+          return {
+            movies: ["《信条》", "《你的名字》", "《让子弹飞》", "《阿甘正传》", "《盗梦空间》"]
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

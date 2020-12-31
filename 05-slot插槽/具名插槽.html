@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>具名插槽</title>
+</head>
+<body>
+<div id="app">
+  <cpn><button>按钮</button></cpn>
+  <hr>
+  <cpn><a href="http://www.baidu.com">百度一下</a></cpn>
+  <hr>
+  <cpn></cpn>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <h2>我是组件</h2>
+    <p>我是组件，Hello Vue.js！</p>
+    <!-- 插槽 -->
+    <slot><span>当前没有使用插槽</span></slot>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js'
+    },
+    //注册组件
+    components: {
+      cpn: {
+        template: '#myTemplate'
+      }
+    }
+  })
+</script>
+</body>
+</html>

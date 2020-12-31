@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>子传父</title>
+</head>
+<body>
+<div id="app">
+  <!-- 监听子组件发送的事件 -->
+  <cpn @item-click="cpnClick"></cpn>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <button v-for="item in categories"
+            @click="btnClick(item)">{{item.name}}</button>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  //子组件
+  const cpn = {
+    template: '#myTemplate',
+    methods: {
+      btnClick(item) {
+        //发送自定义事件
+        this.$emit('item-click', item);
+      }
+    },
+    data() {
+      return {
+        categories: [
+          {id: '001', name: "热门推荐"},
+          {id: '002', name: "手机数码"},
+          {id: '003', name: "家用家电"},
+          {id: '004', name: "电脑办公"},
+        ]
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    methods: {
+      cpnClick(item) {
+        alert("你选择了：" + item.name);
+      }
+    },
+    //注册子组件
+    components: {
+      cpn
+    }
+  })
+</script>
+</body>
+</html>

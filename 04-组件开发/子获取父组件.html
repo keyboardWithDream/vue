@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>子获取父组件</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <h1>子组件</h1>
+    <button @click="btnClick">访问父组件</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js'
+    },
+    //注册子组件
+    components: {
+      cpn: {
+        template: '#myTemplate',
+        methods: {
+          btnClick() {
+            //访问父组件
+            alert(this.$parent.message);
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

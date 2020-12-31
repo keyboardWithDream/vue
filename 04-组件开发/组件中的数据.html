@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件中的数据</title>
+</head>
+<body>
+<div id="app">
+  <my-cpn></my-cpn>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <h1>{{title}}</h1>
+    <p>{{content}}</p>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    components: {
+      myCpn: {
+        template: '#myTemplate',
+        data() {
+          return {
+            title: "组件标题",
+            content: "组件内容"
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

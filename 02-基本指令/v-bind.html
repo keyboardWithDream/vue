@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-bind</title>
+</head>
+<body>
+<div id="app">
+  <a :href="url">百度一下</a>
+  <img :src="imageUrl" alt="图片">
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      url: 'http://www.baidu.com',
+      imageUrl: 'https://study-1259382847.cos.ap-chongqing.myqcloud.com/picbed/%E5%A4%B4%E5%83%8F.JPG'
+    }
+  })
+</script>
+</body>
+</html>

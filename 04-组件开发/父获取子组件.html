@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>父获取子组件</title>
+</head>
+<body>
+<div id="app">
+  <cpn ref="cpn"></cpn>
+  <button @click="btnClick">访问子组件</button>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <h1>子组件</h1>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    methods: {
+      btnClick() {
+        this.$refs.cpn.showMessage();
+      }
+    },
+    //注册子组件
+    components: {
+      cpn: {
+        template: '#myTemplate',
+        data() {
+          return{
+            message: "Hello Vue.js"
+          }
+        },
+        methods: {
+          showMessage() {
+            alert(this.message);
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

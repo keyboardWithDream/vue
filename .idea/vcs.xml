@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/06-vue-route" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/07-tabbar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/09-vuex" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/10-axios" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vuecli3study" vcs="Git" />
+  </component>
+</project>

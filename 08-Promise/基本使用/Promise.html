@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise</title>
+</head>
+<body>
+
+<script>
+  new Promise((resolve, reject) => {
+    //第一次请求代码
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+
+  }).then(() => {
+    //第一次拿到结果代码
+    console.log("Hello World");
+    console.log("Hello World");
+    console.log("Hello World");
+
+    return new Promise((resolve, reject) => {
+      //第二次请求代码
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    }).then(() => {
+      //第二次处理代码
+      console.log("Hello World");
+      console.log("Hello World");
+      console.log("Hello World");
+
+      return new Promise((resolve, reject) => {
+        //第三次请求代码
+        setTimeout(() => {
+          //失败调用reject直接进入catch
+          reject("error message");
+        }, 1000)
+      })
+    }).then(() => {
+      //第三次处理代码（不执行）
+      console.log("Hello World");
+      console.log("Hello World");
+      console.log("Hello World");
+    }).catch((err) => {
+      console.log(err);
+    })
+  })
+</script>
+</body>
+</html>

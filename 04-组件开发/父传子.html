@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>父传子</title>
+</head>
+<body>
+<div id="app">
+  <!-- 通过v-bind将父组件与子组件中的变量进行绑定 -->
+  <cpn v-bind:c-message="message" :c-movies="movies"></cpn>
+</div>
+
+<template id="myTemplate">
+  <div>
+    <h1>{{cMessage}}</h1>
+    <ul>
+      <li v-for="item in cMovies">{{item}}</li>
+    </ul>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  //子组件
+  const cpn = {
+    template: '#myTemplate',
+    //父传子声明变量
+    props: {
+      cMessage: {
+        type: String,
+        default: "暂无数据",
+        required: true
+      },
+      cMovies: {
+        type: Array,
+        default() {
+          return ['暂无数据']
+        },
+        required: true
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js',
+      movies: ["《信条》", "《你的名字》", "《让子弹飞》", "《阿甘正传》", "《盗梦空间》"]
+    },
+    //注册子组件
+    components: {
+      cpn
+    }
+  })
+</script>
+</body>
+</html>
